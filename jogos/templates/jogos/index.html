@@ -1,11 +1,25 @@
+<!-- jogos/templates/jogos/index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Página Inicial dos Jogos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Jogos</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Bem-vindo ao App de Jogos!</h1>
-    <p>Esta é a página inicial do app de jogos.</p>
+    <h1>Jogos Disponíveis</h1>
+    <a href="{% url 'cadastrar_jogo' %}">Cadastrar Novo Jogo</a>
+    <ul>
+        {% for jogo in jogos %}
+            <li>
+                <h2>{{ jogo.nome }}</h2>
+                <p>{{ jogo.descricao }}</p>
+                <p>Preço: R$ {{ jogo.preco }}</p>
+                <img src="{{ jogo.imagem.url }}" alt="{{ jogo.nome }}" style="width:100px;height:auto;">
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
+
