@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +26,7 @@ SECRET_KEY = 'django-insecure-eo%7w$qk=n4ff$1u8uw_mjj55e#v8g6_%jki^3imdy_u3wpqlp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+HOST = 'http://127.0.0.1:8000/'
 ALLOWED_HOSTS = []
 
 
@@ -76,8 +78,12 @@ WSGI_APPLICATION = 'GGEZBG.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ggez',          # Nome do banco de dados que você criou no pgAdmin 4
+        'USER': 'postgres',                # Seu usuário do PostgreSQL
+        'PASSWORD': 'isaac123',              # Senha do usuário
+        'HOST': 'localhost',              # Host, geralmente 'localhost' para ambiente local
+        'PORT': '5432',                   # Porta padrão do PostgreSQL
     }
 }
 
