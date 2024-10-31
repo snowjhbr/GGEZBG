@@ -16,10 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from jogos.views import jogos
+from auth_user.views import jogos
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import include, path
 
 urlpatterns = [
+    path('', include('auth_user.urls')),
+    path('', include('reports.urls')),
     path('admin/', admin.site.urls),
     path('jogos/', include('jogos.urls')),  # Inclui as URLs do app 'jogos'
     path('', jogos, name='jogos'),
-]
+    path("__reload__/", include("django_browser_reload.urls")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
