@@ -1,7 +1,0 @@
-<h1>Lista de Jogos</h1>
-<ul>
-    {% for jogo in jogos %}
-        <li>{{ jogo.nome }} - R$ {{ jogo.preco }}</li>
-    {% endfor %}
-</ul>
-<a href="{% url 'cadastrar_jogo' %}">Cadastrar Novo Jogo</a>
